@@ -1,6 +1,9 @@
 package com.studyinghome.mapper;
 
+import com.studyinghome.model.Role;
 import com.studyinghome.model.User;
+
+import java.util.List;
 
 /**
  * @author Leslie
@@ -9,4 +12,8 @@ import com.studyinghome.model.User;
  */
 
 public interface UserMapper extends BaseMapper<User> {
+
+    User getByName(String name);
+
+    List<Role> getRolesByUid(int uid);
 }

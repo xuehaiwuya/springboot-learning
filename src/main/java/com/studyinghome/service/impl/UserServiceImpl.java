@@ -4,6 +4,8 @@ import com.studyinghome.mapper.UserMapper;
 import com.studyinghome.model.User;
 import com.studyinghome.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -34,5 +36,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public int delete(int id) {
         return userMapper.delete(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        User user = userMapper.getByName(name);
+        if (user == null) {
+            throw new UsernameNotFoundException("账户不存在!");
+        }
+        user.setRoles(userMapper.getRolesByUid(user.getUid()));
+        return user;
     }
 }

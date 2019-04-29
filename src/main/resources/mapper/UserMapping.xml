@@ -10,7 +10,7 @@
     <sql id="table_name">tb_user</sql>
 
     <!-- 查询单条记录 -->
-    <select id="getById" resultMap="BaseResultMap" parameterType="long" useCache="true">
+    <select id="getById" resultType="user" parameterType="int" useCache="true">
         SELECT
         <include refid="Base_Column_List"/>
         FROM

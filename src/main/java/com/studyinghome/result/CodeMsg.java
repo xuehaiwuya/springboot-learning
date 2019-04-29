@@ -18,6 +18,7 @@ public class CodeMsg {
     public static CodeMsg SUCCESS = new CodeMsg(200, "success");
     public static CodeMsg ERROR = new CodeMsg(100, "请求异常");
     public static CodeMsg SERVER_ERROR = new CodeMsg(500, "服务端异常");
+    public static CodeMsg SECURITY_ERROR = new CodeMsg(600, "权限不足");
 
 
     int code;
