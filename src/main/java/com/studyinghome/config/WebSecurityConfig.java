@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.studyinghome.result.CodeMsg;
 import com.studyinghome.result.Result;
 import com.studyinghome.service.UserService;
+import com.studyinghome.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
@@ -60,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 })
                 .and()
                 .formLogin().loginPage("/login_p").loginProcessingUrl("/login")
-                .usernameParameter("username").passwordParameter("password")
+                .usernameParameter("name").passwordParameter("pwd")
                 .failureHandler((req, resp, e) -> {
                     resp.setContentType("application/json;charset=utf-8");
 //                    Result result = null;
@@ -90,7 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                    RespBean respBean = RespBean.ok("登录成功!", HrUtils.getCurrentHr());
                     ObjectMapper om = new ObjectMapper();
                     PrintWriter out = resp.getWriter();
-                    out.write(om.writeValueAsString(Result.success(CodeMsg.SUCCESS)));
+                    out.write(om.writeValueAsString(Result.success(CodeMsg.SUCCESS, UserUtils.getCurrentHr())));
                     out.flush();
                     out.close();
                 })

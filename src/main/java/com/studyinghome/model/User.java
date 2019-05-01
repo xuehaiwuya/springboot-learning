@@ -32,6 +32,7 @@ public class User implements UserDetails {
     private String phone;
     private String photo;
     private String email;
+    private Integer status;
     private List<Role> roles;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
@@ -75,6 +76,10 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        if (status == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

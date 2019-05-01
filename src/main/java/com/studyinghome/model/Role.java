@@ -1,8 +1,11 @@
 package com.studyinghome.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.ibatis.type.Alias;
+
+import java.util.Date;
 
 /**
  * Role
@@ -17,5 +20,9 @@ import org.apache.ibatis.type.Alias;
 public class Role {
     private Integer id;
     private String name;
-    private String nameZh;
+    private String cname;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
 }

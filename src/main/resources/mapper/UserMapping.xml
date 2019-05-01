@@ -3,25 +3,41 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.studyinghome.mapper.UserMapper">
 
-    <sql id="Base_Column_List">
+    <sql id="User_Column_List">
         uid, name, pwd, phone, photo, email, create_time, update_time
     </sql>
 
-    <sql id="table_name">tb_user</sql>
+    <sql id="table_user">tb_user</sql>
 
     <!-- 查询单条记录 -->
     <select id="getById" resultType="user" parameterType="int" useCache="true">
         SELECT
-        <include refid="Base_Column_List"/>
+        <include refid="User_Column_List"/>
         FROM
-        <include refid="table_name"/>
+        <include refid="table_user"/>
         WHERE
         uid = #{id}
+    </select>
+
+    <select id="getByName" resultType="user" parameterType="string">
+        SELECT
+        <include refid="User_Column_List"/>
+        FROM
+        <include refid="table_user"/>
+        WHERE
+        name = #{name}
+    </select>
+
+    <select id="getRolesByUid" resultType="role" parameterType="int">
+        SELECT r.id,r.name,r.cname
+        FROM tb_role r,user_role u
+        WHERE u.rid = r.id
+        AND u.uid = #{uid}
     </select>
     <!-- 添加订单 -->
     <insert id="insert" flushCache="true" parameterType="user">
         INSERT INTO
-        <include refid="table_name"/>
+        <include refid="table_user"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="uid != null">
                 uid,

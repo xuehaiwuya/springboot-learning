@@ -10,9 +10,9 @@
     <sql id="table_name">tb_user</sql>
 
     <!-- 查询单条记录 -->
-    <select id="getAllMenu" resultType="menu">
-        select m.*,r.`id` as rid,r.`name` as rname,r.`nameZh` as rnamezh
-        from menu m left join menu_role mr on m.`id`=mr.`mid`
+    <select id="getAllMenus" resultType="menu">
+        select m.*,r.`id` as rid,r.`name` as rname,r.`cname` as rcname
+        from tb_menu m left join menu_role mr on m.`id`=mr.`mid`
         left join role r on mr.`rid`=r.`id`
         WHERE m.`enabled`=true
         order by m.`id` desc
