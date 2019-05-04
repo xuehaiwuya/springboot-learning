@@ -17,8 +17,10 @@ import lombok.ToString;
 public class CodeMsg {
     public static CodeMsg SUCCESS = new CodeMsg(200, "success");
     public static CodeMsg ERROR = new CodeMsg(100, "请求异常");
+    public static CodeMsg LOGIN_ERROR = new CodeMsg(101, "账户名或者密码输入错误");
+    public static CodeMsg ACCOUNT_ERROR = new CodeMsg(102, "账户被禁用");
+    public static CodeMsg SECURITY_ERROR = new CodeMsg(403, "权限不足");
     public static CodeMsg SERVER_ERROR = new CodeMsg(500, "服务端异常");
-    public static CodeMsg SECURITY_ERROR = new CodeMsg(600, "权限不足");
 
 
     int code;
