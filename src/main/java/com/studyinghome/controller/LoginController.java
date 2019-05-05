@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
-    @RequestMapping(value = "/login_p")
+    @RequestMapping(value = "/login")
     public Result login() {
-        return Result.error(CodeMsg.ERROR);
+        return Result.error(CodeMsg.NEED_LOGIN);
     }
 }

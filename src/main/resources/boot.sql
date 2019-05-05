@@ -19,9 +19,9 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
-  `uid` bigint(20) NOT NULL AUTO_INCREMENT COMMENT  '主键id',
+  `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT  '主键id',
   `name` varchar(50) NOT NULL COMMENT               '用户名',
-  `pwd` varchar(50) DEFAULT NULL COMMENT            '密码',
+  `pwd` varchar(100) DEFAULT NULL COMMENT            '密码',
   `phone` varchar(20) NOT NULL COMMENT              '手机',
   `photo` varchar(100) DEFAULT NULL COMMENT         '头像',
   `email` varchar(50) DEFAULT NULL COMMENT          '邮箱',
@@ -79,8 +79,8 @@ CREATE TABLE `tb_menu` (
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`),
-  KEY `parentId` (`parentId`),
-  CONSTRAINT `menu_to_menu` FOREIGN KEY (`parentId`) REFERENCES `tb_menu` (`id`)
+  KEY `parent_id` (`parent_id`),
+  CONSTRAINT `menu_to_menu` FOREIGN KEY (`parent_id`) REFERENCES `tb_menu` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -124,7 +124,7 @@ INSERT INTO `menu_role` VALUES ('5', '11', '6');
 -- ----------------------------
 -- Records of tb_menu
 -- ----------------------------
-INSERT INTO `tb_menu` VALUES ('1',  '/',                     null,         null,       '所有',       null,                   null, null, null, '1');
+INSERT INTO `tb_menu` VALUES ('1',  '/',                     null,         null,       '所有',       null,                   null, null, null, '1','2019-05-05 10:10:10','2019-05-05 10:10:10');
 INSERT INTO `tb_menu` VALUES ('2',  '/',                     '/home',      'Home',     '员工资料',   'fa fa-user-circle-o',  null, '1',  '1',  '1');
 INSERT INTO `tb_menu` VALUES ('3',  '/',                     '/home',      'Home',     '人事管理',   'fa fa-address-card-o', null, '1',  '1',  '1');
 INSERT INTO `tb_menu` VALUES ('4',  '/',                     '/home',      'Home',     '薪资管理',   'fa fa-money',          null, '1',  '1',  '1');

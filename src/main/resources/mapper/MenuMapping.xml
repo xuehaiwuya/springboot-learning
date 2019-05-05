@@ -13,8 +13,8 @@
     <select id="getAllMenus" resultType="menu">
         select m.*,r.`id` as rid,r.`name` as rname,r.`cname` as rcname
         from tb_menu m left join menu_role mr on m.`id`=mr.`mid`
-        left join role r on mr.`rid`=r.`id`
-        WHERE m.`enabled`=true
+        left join tb_role r on mr.`rid`=r.`id`
+        WHERE m.`status`=true
         order by m.`id` desc
     </select>
 </mapper>
