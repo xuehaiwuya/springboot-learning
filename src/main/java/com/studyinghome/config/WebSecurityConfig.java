@@ -143,11 +143,13 @@ class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler
 @Component
 class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        PrintWriter out = httpServletResponse.getWriter();
-        out.write(JsonUtil.obj2String(Result.success(CodeMsg.SUCCESS, UserUtils.getCurrentHr())));
-        out.flush();
-        out.close();
+    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
+        //try(...)中的流操作会在结束后自动关闭，不需要手动关闭
+        try (PrintWriter out = httpServletResponse.getWriter()) {
+            out.write(JsonUtil.obj2String(Result.success(CodeMsg.SUCCESS, UserUtils.getCurrentHr())));
+            out.flush();
+        } catch (IOException e) {
+        }
     }
 }
 
