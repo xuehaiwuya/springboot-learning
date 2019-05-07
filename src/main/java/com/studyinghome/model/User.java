@@ -1,6 +1,5 @@
 package com.studyinghome.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,15 +27,14 @@ import java.util.List;
 public class User implements UserDetails {
     private int uid;
     private String name;
+    @JsonIgnore
     private String pwd;
     private String phone;
     private String photo;
     private String email;
     private Integer status;
     private List<Role> roles;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     @Override
@@ -51,7 +49,7 @@ public class User implements UserDetails {
     @JsonIgnore
     @Override
     public String getPassword() {
-        return null;
+        return pwd;
     }
 
     @Override
@@ -59,16 +57,19 @@ public class User implements UserDetails {
         return name;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;

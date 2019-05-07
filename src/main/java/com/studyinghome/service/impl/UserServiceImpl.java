@@ -47,4 +47,8 @@ public class UserServiceImpl implements UserService {
         user.setRoles(userMapper.getRolesByUid(user.getUid()));
         return user;
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(new BCryptPasswordEncoder().encode("123456"));
+//    }
 }

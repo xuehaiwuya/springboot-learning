@@ -45,8 +45,6 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
      * 但是在我的整个业务中，并不存在这样的请求，我这里的要求是，所有未匹配到的路径，都是认证(登录)后可访问，
      * 因此我在这里返回一个ROLE_LOGIN的角色，这种角色在我的角色数据库中并不存在，
      * 因此我将在下一步的角色比对过程中特殊处理这种角色。
-     * <p>
-     * 5.如果地址是/login_p，这个是登录页，不需要任何角色即可访问，直接返回null。
      *
      * @param o
      * @return

@@ -4,7 +4,7 @@
 <mapper namespace="com.studyinghome.mapper.UserMapper">
 
     <sql id="User_Column_List">
-        uid, name, pwd, phone, photo, email, create_time, update_time
+        uid, name, pwd, phone, photo, email, status, create_time, update_time
     </sql>
 
     <sql id="table_user">tb_user</sql>
