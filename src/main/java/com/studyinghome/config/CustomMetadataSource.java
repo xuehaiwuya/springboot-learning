@@ -3,6 +3,8 @@ package com.studyinghome.config;
 import com.studyinghome.model.Menu;
 import com.studyinghome.model.Role;
 import com.studyinghome.service.MenuService;
+import com.studyinghome.utils.JsonUtil;
+import com.studyinghome.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -10,6 +12,7 @@ import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,6 +28,8 @@ import java.util.List;
 public class CustomMetadataSource implements FilterInvocationSecurityMetadataSource {
     @Autowired
     MenuService menuService;
+    @Autowired
+    RedisUtil redisUtil;
     AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     /**
@@ -53,9 +58,22 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
     public Collection<ConfigAttribute> getAttributes(Object o) {
         //获取请求地址
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
-        //获取所有权限信息以及其对应的角色
-        List<Menu> allMenu = menuService.getAllMenu();
+        //获取所有权限信息以及其对应的角色,根据需求可以将查询出的信息存进redis中
+//        List<Menu> allMenu = menuService.getAllMenu();
+        List<Menu> allMenu = JsonUtil.string2Obj(redisUtil.get("menu:all"), List.class);
+        if (CollectionUtils.isEmpty(allMenu)) {
+            allMenu = menuService.getAllMenu();
+            redisUtil.set("menu:all", JsonUtil.obj2String(allMenu));
+        }
+
+        System.out.println(JsonUtil.obj2String(allMenu));
+
+
         for (Menu menu : allMenu) {
+            //如果不需要访问权限则默认登录访问
+            if (menu.getRequireAuth() == 0) {
+                return SecurityConfig.createList("ROLE_LOGIN");
+            }
             if (antPathMatcher.match(menu.getUrl(), requestUrl) && menu.getRoles().size() > 0) {
                 List<Role> roles = menu.getRoles();
                 int size = roles.size();
@@ -63,6 +81,7 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
                 for (int i = 0; i < size; i++) {
                     values[i] = roles.get(i).getName();
                 }
+                //返回网络请求对应的角色信息
                 return SecurityConfig.createList(values);
             }
         }

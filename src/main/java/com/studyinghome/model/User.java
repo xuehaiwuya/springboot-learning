@@ -29,14 +29,31 @@ public class User implements UserDetails {
     private String name;
     @JsonIgnore
     private String pwd;
+    /**
+     * 用户联系方式
+     */
     private String phone;
+    /**
+     * 用户头像
+     */
     private String photo;
+    /**
+     * 用户邮箱
+     */
     private String email;
+    /**
+     * 用户账户状态
+     */
+    @JsonIgnore
     private Integer status;
+    /**
+     * 用户角色
+     */
     private List<Role> roles;
     private Date createTime;
     private Date updateTime;
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -52,6 +69,7 @@ public class User implements UserDetails {
         return pwd;
     }
 
+    @JsonIgnore
     @Override
     public String getUsername() {
         return name;
@@ -75,6 +93,7 @@ public class User implements UserDetails {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         if (status == 1) {

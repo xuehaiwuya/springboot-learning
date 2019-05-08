@@ -1,8 +1,8 @@
 package com.studyinghome.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.studyinghome.result.CodeMsg;
 import com.studyinghome.result.Result;
+import com.studyinghome.utils.JsonUtil;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -24,11 +24,10 @@ public class AuthenticationAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse resp,
                        AccessDeniedException e) throws IOException {
-        resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
         resp.setContentType("application/json;charset=UTF-8");
         PrintWriter out = resp.getWriter();
         Result error = Result.error(CodeMsg.SECURITY_ERROR);
-        out.write(new ObjectMapper().writeValueAsString(error));
+        out.write(JsonUtil.obj2String(error));
         out.flush();
         out.close();
     }

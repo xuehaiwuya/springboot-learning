@@ -20,7 +20,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(int id) {
-        return userMapper.getById(id);
+        User user = userMapper.getById(id);
+        if (null != user) {
+            user.setRoles(userMapper.getRolesByUid(user.getUid()));
+        }
+        return user;
     }
 
     @Override

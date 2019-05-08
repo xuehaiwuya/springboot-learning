@@ -60,12 +60,11 @@ public class LoginHandler implements AuthenticationFailureHandler, Authenticatio
      */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        //try(...)中的流操作会在结束后自动关闭，不需要手动关闭
-        try (PrintWriter out = response.getWriter()) {
-            out.write(JsonUtil.obj2String(Result.success(CodeMsg.SUCCESS, UserUtils.getCurrentHr())));
-            out.flush();
-        } catch (IOException e) {
-        }
+        response.setContentType("application/json;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        out.write(JsonUtil.obj2String(Result.success(CodeMsg.SUCCESS, UserUtils.getCurrentHr())));
+        out.flush();
+        out.close();
     }
 
     /**
