@@ -27,7 +27,6 @@ import java.util.List;
 public class User implements UserDetails {
     private int uid;
     private String name;
-    @JsonIgnore
     private String pwd;
     /**
      * 用户联系方式
@@ -44,7 +43,6 @@ public class User implements UserDetails {
     /**
      * 用户账户状态
      */
-    @JsonIgnore
     private Integer status;
     /**
      * 用户角色
@@ -63,37 +61,31 @@ public class User implements UserDetails {
         return authorities;
     }
 
-    @JsonIgnore
     @Override
     public String getPassword() {
         return pwd;
     }
 
-    @JsonIgnore
     @Override
     public String getUsername() {
         return name;
     }
 
-    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isEnabled() {
         if (status == 1) {

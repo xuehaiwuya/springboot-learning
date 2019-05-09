@@ -1,6 +1,5 @@
 package com.studyinghome.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +23,6 @@ public class Role {
     /**
      * 角色名称：ROLE_xxx
      */
-    @JsonIgnore
     private String name;
     /**
      * 角色中文名

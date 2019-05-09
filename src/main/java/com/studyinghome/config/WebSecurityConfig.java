@@ -1,5 +1,6 @@
 package com.studyinghome.config;
 
+import com.studyinghome.common.Const;
 import com.studyinghome.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -42,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         //过滤不需要登录的请求
-        web.ignoring().antMatchers("/auth");
+        web.ignoring().antMatchers(Const.AUTH);
     }
 
     /**
@@ -71,17 +72,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 //loginPage登录页面，此处定义为用户未登录时返回的信息，前端接收到信息转跳登录页面，loginProcessingUrl所有登录请求地址
-                .loginPage("/auth")
-                .loginProcessingUrl("/login")
+                .loginPage(Const.AUTH)
+                .loginProcessingUrl(Const.LOGIN)
                 //登录请求时的用户名和密码字段
-                .usernameParameter("name").passwordParameter("pwd")
+                .usernameParameter(Const.USERNAME).passwordParameter(Const.PASSWORD)
                 .failureHandler(loginHandler)
                 .successHandler(loginHandler)
                 .permitAll()
                 .and()
                 //退出登录操作
                 .logout()
-                .logoutUrl("/logout")
+                .logoutUrl(Const.LOGOUT)
                 .logoutSuccessHandler(loginHandler)
                 .permitAll()
                 .and()

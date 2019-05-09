@@ -1,5 +1,6 @@
 package com.studyinghome.config;
 
+import com.studyinghome.common.Const;
 import com.studyinghome.model.Menu;
 import com.studyinghome.model.Role;
 import com.studyinghome.service.MenuService;
@@ -59,20 +60,15 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
         //获取请求地址
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         //获取所有权限信息以及其对应的角色,根据需求可以将查询出的信息存进redis中
-//        List<Menu> allMenu = menuService.getAllMenu();
-        List<Menu> allMenu = JsonUtil.string2Obj(redisUtil.get("menu:all"), List.class);
+        List<Menu> allMenu = JsonUtil.string2Obj(redisUtil.get(Const.ALL_MENU), List.class, Menu.class);
         if (CollectionUtils.isEmpty(allMenu)) {
             allMenu = menuService.getAllMenu();
-            redisUtil.set("menu:all", JsonUtil.obj2String(allMenu));
+            redisUtil.setEx(Const.ALL_MENU, JsonUtil.obj2String(allMenu), Const.DEFAULT_REDIS_SESSION_TIMEOUT);
         }
-
-        System.out.println(JsonUtil.obj2String(allMenu));
-
-
         for (Menu menu : allMenu) {
             //如果不需要访问权限则默认登录访问
             if (menu.getRequireAuth() == 0) {
-                return SecurityConfig.createList("ROLE_LOGIN");
+                return SecurityConfig.createList(Const.ROLE_LOGIN);
             }
             if (antPathMatcher.match(menu.getUrl(), requestUrl) && menu.getRoles().size() > 0) {
                 List<Role> roles = menu.getRoles();
@@ -86,7 +82,7 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
             }
         }
         //没有匹配上的资源，都是登录访问
-        return SecurityConfig.createList("ROLE_LOGIN");
+        return SecurityConfig.createList(Const.ROLE_LOGIN);
     }
 
     @Override

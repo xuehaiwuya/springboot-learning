@@ -3,8 +3,10 @@ package com.studyinghome.config;
 import com.studyinghome.result.CodeMsg;
 import com.studyinghome.result.Result;
 import com.studyinghome.utils.JsonUtil;
+import com.studyinghome.utils.RedisUtil;
 import com.studyinghome.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -29,6 +31,9 @@ import java.io.PrintWriter;
  */
 @Component
 public class LoginHandler implements AuthenticationFailureHandler, AuthenticationSuccessHandler, LogoutSuccessHandler {
+    @Autowired
+    RedisUtil redisUtil;
+
     /**
      * 登录失败操作
      */
@@ -72,18 +77,17 @@ public class LoginHandler implements AuthenticationFailureHandler, Authenticatio
      */
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        //获取用户token
-        String token = request.getParameter("token");
-        if (StringUtils.isBlank(token)) {
-            token = "9527";
-        }
+        //获取用户name
+        String name = request.getParameter("name");
         //执行退出操作
         //1.删除redis缓存
-
+        if (!StringUtils.isBlank(name) && redisUtil.get(name) != null) {
+            redisUtil.del(name);
+        }
         //2.返回用户退出成功信息
         response.setContentType("application/json;charset=utf-8");
         PrintWriter out = response.getWriter();
-        out.write(JsonUtil.obj2String(Result.success(CodeMsg.SUCCESS, token)));
+        out.write(JsonUtil.obj2String(Result.success(CodeMsg.SUCCESS)));
         out.flush();
         out.close();
     }

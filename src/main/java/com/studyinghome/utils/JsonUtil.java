@@ -90,6 +90,9 @@ public class JsonUtil {
     }
 
     public static <T> T string2Obj(String str, Class<?> collectionClass, Class<?>... elementClasses) {
+        if (StringUtils.isEmpty(str)) {
+            return null;
+        }
         JavaType javaType = objectMapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);
         try {
             return objectMapper.readValue(str, javaType);
