@@ -63,10 +63,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
-                    public <O extends FilterSecurityInterceptor> O postProcess(O o) {
-                        o.setSecurityMetadataSource(metadataSource);
-                        o.setAccessDecisionManager(urlAccessDecisionManager);
-                        return o;
+                    public <O extends FilterSecurityInterceptor> O postProcess(O object) {
+                        object.setSecurityMetadataSource(metadataSource);
+                        object.setAccessDecisionManager(urlAccessDecisionManager);
+                        return object;
                     }
                 })
                 .and()

@@ -28,5 +28,4 @@ public class UserController {
         }
         return Result.success(CodeMsg.SUCCESS, user);
     }
-
 }

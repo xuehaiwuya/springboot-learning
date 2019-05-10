@@ -38,4 +38,11 @@ public final class Const {
     public static final String LOGIN = "/login";
     public static final String LOGOUT = "/logout";
 
+    /**
+     * MQ 常量
+     */
+    public static final String TOPICNAME = "Leslie";
+    public static final String ORDERQUEUE = "order";
+    public static final String USERQUEUE = "user";
+
 }
