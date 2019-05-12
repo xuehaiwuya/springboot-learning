@@ -7,6 +7,7 @@ import com.studyinghome.result.CodeMsg;
 import com.studyinghome.result.Result;
 import com.studyinghome.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,12 +30,12 @@ public class LoginController {
     @Autowired
     MsgSender msgSender;
 
-    @RequestMapping(value = "/auth")
+    @GetMapping(value = "/auth")
     public Result login() {
         return Result.error(CodeMsg.NEED_LOGIN);
     }
 
-    @RequestMapping("get/user/{id}")
+    @GetMapping("get/user/{id}")
     public Result queryUser(@PathVariable("id") int id) {
         User user = userService.getUserById(id);
         if (null == user) {

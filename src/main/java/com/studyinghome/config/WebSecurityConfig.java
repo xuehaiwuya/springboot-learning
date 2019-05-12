@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import sun.misc.ObjectInputFilter;
 
 /**
  * WebSecurityConfig
@@ -43,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         //过滤不需要登录的请求
-        web.ignoring().antMatchers(Const.AUTH);
+        web.ignoring().antMatchers(Const.AUTH, Const.SWAGGER);
     }
 
     /**
@@ -60,6 +61,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        configurePermitAll(http);
+    }
+
+    /**
+     * close SpringSecurity
+     *
+     * @param http
+     * @throws Exception
+     */
+    private void configurePermitAll(HttpSecurity http) throws Exception {
+        http.authorizeRequests().anyRequest().permitAll().and().logout().permitAll();
+    }
+
+    /**
+     * open SpringSecurity
+     *
+     * @param http
+     * @throws Exception
+     */
+    private void configureSecurity(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
