@@ -22,11 +22,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addConverter(new DateTimeUtil());
     }
 
+    /**
+     * 初始化线程池
+     */
     @Bean
     public ExecutorService executorService() {
+        //自定义线程名
+        ThreadFactory threadFactory = runnable -> new Thread(runnable, "init-threadPool");
         ThreadPoolExecutor thread = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
                 60L, TimeUnit.SECONDS,
-                new SynchronousQueue<>());
+                new SynchronousQueue<>(), threadFactory);
         return thread;
     }
 }

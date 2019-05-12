@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutorService;
+
 /**
  * ${DESCRIPTION}
  *
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
     @Autowired
+    ExecutorService executorService;
+    @Autowired
     UserService userService;
     @Autowired
     MsgSender msgSender;
@@ -30,13 +34,20 @@ public class LoginController {
         return Result.error(CodeMsg.NEED_LOGIN);
     }
 
-    @RequestMapping("/user/{id}")
+    @RequestMapping("get/user/{id}")
     public Result queryUser(@PathVariable("id") int id) {
         User user = userService.getUserById(id);
         if (null == user) {
             return Result.error(CodeMsg.ERROR);
         }
-        msgSender.sendUser(Message.getMessage(user));
+        //多线程处理消息发送，不需要返回结果时可以避免等待
+        long start = System.currentTimeMillis();
+        //使用线程池方式创建线程
+        executorService.execute(
+                () -> msgSender.sendUser(Message.getMessage(user))
+        );
+        long end = System.currentTimeMillis();
+        System.out.println("总共耗时：" + (end - start));
         return Result.success(CodeMsg.SUCCESS, user);
     }
 }

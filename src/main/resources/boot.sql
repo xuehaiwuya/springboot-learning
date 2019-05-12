@@ -19,9 +19,9 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT  '主键id',
+  `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT     '主键id',
   `name` varchar(50) NOT NULL COMMENT               '用户名',
-  `pwd` varchar(100) DEFAULT NULL COMMENT            '密码',
+  `pwd` varchar(100) DEFAULT NULL COMMENT           '密码',
   `phone` varchar(20) NOT NULL COMMENT              '手机',
   `photo` varchar(100) DEFAULT NULL COMMENT         '头像',
   `email` varchar(50) DEFAULT NULL COMMENT          '邮箱',
