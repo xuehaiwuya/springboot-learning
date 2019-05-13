@@ -1,10 +1,11 @@
 package com.studyinghome.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * ${DESCRIPTION}
+ * Message
  *
  * @author Leslie
  * @email panxiang_work@163.com
@@ -12,16 +13,17 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Message<T> {
-    private Integer code;
-    private T msg;
+@NoArgsConstructor
+public class Message {
+    private String operate;
+    private String message;
 
-    public static <T> Message<T> getMessage(T t) {
-        return new Message(t);
+    public static Message getMessage(String operate, String message) {
+        return new Message(operate, message);
     }
 
-    Message(T t) {
-        this.code = 200;
-        this.msg = t;
+    private Message(String operate, String message) {
+        this.operate = operate;
+        this.message = message;
     }
 }

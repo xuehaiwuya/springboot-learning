@@ -60,7 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        configurePermitAll(http);
+//        configurePermitAll(http);
+        configureSecurity(http);
     }
 
     /**

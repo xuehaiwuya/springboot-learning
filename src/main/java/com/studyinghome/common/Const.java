@@ -45,5 +45,6 @@ public final class Const {
     public static final String TOPICNAME = "Leslie";
     public static final String ORDERQUEUE = "order";
     public static final String USERQUEUE = "user";
+    public static final String LOGQUEUE = "log";
 
 }

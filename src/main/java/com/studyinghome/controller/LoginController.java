@@ -6,10 +6,10 @@ import com.studyinghome.rabbitmq.MsgSender;
 import com.studyinghome.result.CodeMsg;
 import com.studyinghome.result.Result;
 import com.studyinghome.service.UserService;
+import com.studyinghome.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutorService;
@@ -44,9 +44,7 @@ public class LoginController {
         //多线程处理消息发送，不需要返回结果时可以避免等待
         long start = System.currentTimeMillis();
         //使用线程池方式创建线程
-        executorService.execute(
-                () -> msgSender.sendUser(Message.getMessage(user))
-        );
+        executorService.execute(() -> msgSender.sendUser(Message.getMessage("query", JsonUtil.obj2String(user))));
         long end = System.currentTimeMillis();
         System.out.println("总共耗时：" + (end - start));
         return Result.success(CodeMsg.SUCCESS, user);

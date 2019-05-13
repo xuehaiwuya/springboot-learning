@@ -30,7 +30,7 @@ public class TopicConfig {
     }
 
     /**
-     * 用来存储order相关的消息
+     * 用来处理order相关的消息
      */
     @Bean
     public Queue order() {
@@ -38,11 +38,16 @@ public class TopicConfig {
     }
 
     /**
-     * 存储用户相关的消息
+     * 处理用户相关的消息
      */
     @Bean
     public Queue user() {
         return new Queue(Const.USERQUEUE);
+    }
+
+    @Bean
+    public Queue log() {
+        return new Queue(Const.LOGQUEUE);
     }
 
     @Bean
@@ -53,6 +58,11 @@ public class TopicConfig {
     @Bean
     Binding userBinding() {
         return BindingBuilder.bind(user()).to(topicExchange()).with(Const.USERQUEUE + ".#");
+    }
+
+    @Bean
+    Binding logBinding() {
+        return BindingBuilder.bind(log()).to(topicExchange()).with(Const.LOGQUEUE + ".#");
     }
 
 }

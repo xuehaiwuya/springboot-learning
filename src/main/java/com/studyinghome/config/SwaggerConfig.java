@@ -29,7 +29,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("springboot use swagger")
+                .title("springboot练习项目接口")
                 .version("1.0")
                 .build();
     }
