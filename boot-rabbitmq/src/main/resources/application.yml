@@ -1,0 +1,14 @@
+# SPRING PROFILES
+spring:
+  profiles:
+    include: [center]
+  #rabbitMq setting
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+# Server settings
+server:
+  port: 8080

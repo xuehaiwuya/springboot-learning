@@ -1,0 +1,19 @@
+# SPRING PROFILES
+spring:
+  profiles:
+    include: [center]
+  #reids setting
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+
+logging:
+  level: info
