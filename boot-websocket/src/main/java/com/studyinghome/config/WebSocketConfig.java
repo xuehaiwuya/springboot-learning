@@ -1,4 +1,4 @@
-package com.studyinghome.framework.config;
+package com.studyinghome.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

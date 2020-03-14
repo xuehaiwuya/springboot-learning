@@ -23,8 +23,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "use id get user information",notes = "query user")
-    @ApiImplicitParam(name = "id",value = "user id")
+    /**
+     * swagger文档 访问地址为：http://ip:port/swagger-ui.html
+     * <p>
+     * swagger的具体使用方式请参考swagger官网：https://swagger.io/
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "use id get user information", notes = "query user")
+    @ApiImplicitParam(name = "id", value = "user id")
     @GetMapping(value = "{id}")
     public Result getUser(@PathVariable("id") long id) {
         User user = userService.getByPrimaryKey(id);

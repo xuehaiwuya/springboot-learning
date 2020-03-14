@@ -1,4 +1,4 @@
-package com.studyinghome.framework.rabbitmq;
+package com.studyinghome.rabbitmq;
 
 import com.studyinghome.business.common.RabbitConst;
 import com.studyinghome.business.entity.Message;

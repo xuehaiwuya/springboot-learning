@@ -1,7 +1,7 @@
 package com.studyinghome.config;
 
 import com.studyinghome.business.entity.Message;
-import com.studyinghome.framework.rabbitmq.MsgSender;
+import com.studyinghome.rabbitmq.MsgSender;
 import com.studyinghome.framework.result.CodeMsg;
 import com.studyinghome.framework.result.Result;
 import com.studyinghome.utils.JsonUtil;

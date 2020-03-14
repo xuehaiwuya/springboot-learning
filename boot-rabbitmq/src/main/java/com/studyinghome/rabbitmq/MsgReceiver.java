@@ -1,15 +1,13 @@
-package com.studyinghome.framework.rabbitmq;
+package com.studyinghome.rabbitmq;
 
 import com.studyinghome.business.common.RabbitConst;
 import com.studyinghome.business.entity.Message;
 import com.studyinghome.business.entity.User;
 import com.studyinghome.utils.DateTimeUtil;
 import com.studyinghome.utils.JsonUtil;
-import com.studyinghome.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -24,8 +22,6 @@ import java.util.Date;
 @Slf4j
 @Component
 public class MsgReceiver {
-    @Autowired
-    private RedisUtil redisUtil;
 
     @RabbitListener(queues = RabbitConst.ORDERQUEUE)
     public void orderReceive(String message) {

@@ -1,0 +1,10 @@
+# SPRING PROFILES
+spring:
+  profiles:
+    include: [center]
+
+# Server settings
+server:
+  port: 8086
+  servlet:
+    context-path: /boot-mybatis-plus

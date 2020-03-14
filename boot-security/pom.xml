@@ -19,6 +19,16 @@
             <groupId>com.studyinghome</groupId>
             <artifactId>boot-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.studyinghome</groupId>
+            <artifactId>boot-redis</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.studyinghome</groupId>
+            <artifactId>boot-rabbitmq</artifactId>
+            <version>0.0.1</version>
+        </dependency>
 
         <!--spring security-->
         <dependency>
