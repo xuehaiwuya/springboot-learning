@@ -17,6 +17,7 @@
         <module>boot-websocket</module>
         <module>boot-rabbitmq</module>
         <module>boot-security</module>
+        <module>boot-mybatis-plus</module>
     </modules>
 
     <parent>
@@ -36,6 +37,7 @@
         <commons.lang.version>2.6</commons.lang.version>
         <druid.version>1.1.9</druid.version>
         <mybatis.version>1.3.2</mybatis.version>
+        <mybatis.plus.version>3.3.1</mybatis.plus.version>
     </properties>
 
     <dependencyManagement>

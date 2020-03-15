@@ -3,24 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.5.RELEASE</version>
+        <groupId>com.studyinghome</groupId>
+        <artifactId>springboot</artifactId>
+        <version>0.0.1</version>
         <relativePath/>
     </parent>
 
-    <groupId>com.studyinghome</groupId>
     <artifactId>boot-mybatis-plus</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>boot-mybatis-plus</name>
     <description>mybatis-plus project for Spring Boot</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <mybatis.plus.version>3.3.1</mybatis.plus.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -37,21 +31,16 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--阿里druid数据源-->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>3.8.7</version>
         </dependency>
     </dependencies>
 

@@ -5,6 +5,7 @@ springboot学习项目,通过springboot整合一些开发中常用的技术来�
 
 #### 整合技术
 + MyBatis
++ MyBatis-plus
 + Redis
 + SpringSecurity
 + RabbitMQ
@@ -25,10 +26,12 @@ springboot学习项目,通过springboot整合一些开发中常用的技术来�
 | 模块           | 说明                           |    
 | ----------    | -----------------------        |    
 | boot-core     |       项目核心代码              |
-| boot-mybatis  |     springboot + mybatis + swagger |
-| boot-redis    |       springboot + redis + mybatis | 
-| boot-rabbitmq |    springboot + rabbitmq         | 
-| boot-security |    springboot + springsecurity   | 
+| boot-mybatis  |     SpringBoot + MyBatis + Swagger |
+| boot-mybatis-plus  |     SpringBoot + MyBatis-Plus |
+| boot-redis    |       SpringBoot + redis + mybatis | 
+| boot-rabbitmq |    SpringBoot + RabbitMQ         | 
+| boot-security |    SpringBoot + SpringSecurity   | 
+| boot-websocket |    SpringBoot + Websocket   | 
 | document      |         文档说明+sql文件        | 
 
 
