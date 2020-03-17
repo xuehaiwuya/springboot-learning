@@ -2,11 +2,6 @@ package com.studyinghome.business.entity;
 
 import com.studyinghome.framework.object.AbstractDO;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.apache.ibatis.type.Alias;
-
-import java.util.List;
 
 
 /**
@@ -16,7 +11,6 @@ import java.util.List;
  * @email panxiang_work@163.com
  * @create 2019-04-26 15:02
  */
-@Alias("user")
 @Data
 public class User extends AbstractDO {
     private String name;

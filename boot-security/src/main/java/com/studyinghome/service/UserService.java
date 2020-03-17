@@ -1,6 +1,6 @@
 package com.studyinghome.service;
 
-import com.studyinghome.beans.SysUser;
+import com.studyinghome.entity.SecurityUser;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -9,5 +9,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @create 2019-04-26 15:16
  */
 public interface UserService extends UserDetailsService {
-    SysUser getUserById(Long id);
+    SecurityUser getUserById(Long id);
 }

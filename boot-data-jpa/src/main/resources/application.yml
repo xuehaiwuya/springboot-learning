@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    include: [center]
+    # 测试环境使用
+  jpa:
+    show-sql: true
+
+# Server settings
+server:
+  port: 8088
+  servlet:
+    context-path: /boot-data-jpa

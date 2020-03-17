@@ -2,8 +2,10 @@
 spring:
   datasource:
     druid:
+      # mysql-connector-java 6中的
       driver-class-name: com.mysql.cj.jdbc.Driver
-#      driver-class-name: com.mysql.jdbc.Driver
+      # mysql-connector-java 5中的，
+      # driver-class-name: com.mysql.jdbc.Driver
       connection-init-sqls: set names utf8mb4
       initial-size: 10
       max-active: 1000
@@ -22,10 +24,3 @@ spring:
     url: jdbc:mysql://localhost:3322/db_test?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: root
     password: 341125
-
-######### mybatis ##########
-mybatis:
-  mapper-locations: classpath:mapper/**.xml
-  configuration:
-    map-underscore-to-camel-case: true
-  type-aliases-package: com.studyinghome.business.entity

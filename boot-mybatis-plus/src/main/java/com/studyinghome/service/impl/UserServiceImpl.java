@@ -2,7 +2,7 @@ package com.studyinghome.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.studyinghome.beans.User;
+import com.studyinghome.entity.User;
 import com.studyinghome.mapper.UserMapper;
 import com.studyinghome.service.IUserService;
 import lombok.extern.slf4j.Slf4j;

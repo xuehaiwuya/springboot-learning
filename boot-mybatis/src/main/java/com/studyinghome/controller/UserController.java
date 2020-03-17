@@ -1,9 +1,9 @@
 package com.studyinghome.controller;
 
-import com.studyinghome.business.entity.User;
-import com.studyinghome.business.service.UserService;
+import com.studyinghome.entity.SysUser;
 import com.studyinghome.framework.result.CodeMsg;
 import com.studyinghome.framework.result.Result;
+import com.studyinghome.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "user id")
     @GetMapping(value = "{id}")
     public Result getUser(@PathVariable("id") long id) {
-        User user = userService.getByPrimaryKey(id);
+        SysUser user = userService.getByPrimaryKey(id);
         if (null == user) {
             return Result.error(CodeMsg.ERROR);
         }

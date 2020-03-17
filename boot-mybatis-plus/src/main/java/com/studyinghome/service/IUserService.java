@@ -1,6 +1,6 @@
 package com.studyinghome.service;
 
-import com.studyinghome.beans.User;
+import com.studyinghome.entity.User;
 
 /**
  * @author Leslie (panxiang_work@163.com)

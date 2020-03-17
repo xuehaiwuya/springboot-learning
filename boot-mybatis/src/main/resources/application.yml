@@ -8,3 +8,10 @@ server:
   port: 8080
   servlet:
     context-path: /boot-mybatis
+
+# mybatis settings
+mybatis:
+  mapper-locations: classpath:mapping/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.studyinghome.entity

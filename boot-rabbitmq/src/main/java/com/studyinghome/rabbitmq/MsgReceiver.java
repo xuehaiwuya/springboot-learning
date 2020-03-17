@@ -1,8 +1,8 @@
 package com.studyinghome.rabbitmq;
 
 import com.studyinghome.business.common.RabbitConst;
-import com.studyinghome.business.entity.Message;
 import com.studyinghome.business.entity.User;
+import com.studyinghome.entity.Message;
 import com.studyinghome.utils.DateTimeUtil;
 import com.studyinghome.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;

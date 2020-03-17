@@ -1,9 +1,9 @@
 package com.studyinghome.config;
 
-import com.studyinghome.business.entity.Message;
-import com.studyinghome.rabbitmq.MsgSender;
+import com.studyinghome.entity.Message;
 import com.studyinghome.framework.result.CodeMsg;
 import com.studyinghome.framework.result.Result;
+import com.studyinghome.rabbitmq.MsgSender;
 import com.studyinghome.utils.JsonUtil;
 import com.studyinghome.utils.RedisUtil;
 import com.studyinghome.utils.UserUtils;

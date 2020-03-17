@@ -1,6 +1,6 @@
 package com.studyinghome.controller;
 
-import com.studyinghome.beans.User;
+import com.studyinghome.entity.User;
 import com.studyinghome.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

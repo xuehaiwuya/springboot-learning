@@ -29,6 +29,11 @@
             <artifactId>boot-rabbitmq</artifactId>
             <version>0.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.studyinghome</groupId>
+            <artifactId>boot-mybatis</artifactId>
+            <version>0.0.1</version>
+        </dependency>
 
         <!--spring security-->
         <dependency>

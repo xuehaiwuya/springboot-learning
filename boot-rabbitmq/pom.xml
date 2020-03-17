@@ -21,6 +21,11 @@
             <groupId>com.studyinghome</groupId>
             <artifactId>boot-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.studyinghome</groupId>
+            <artifactId>boot-mybatis</artifactId>
+            <version>0.0.1</version>
+        </dependency>
         <!--RabbitMq-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,11 +1,12 @@
 package com.studyinghome.controller;
 
-import com.studyinghome.business.entity.Message;
 import com.studyinghome.business.entity.User;
-import com.studyinghome.business.service.UserService;
-import com.studyinghome.rabbitmq.MsgSender;
+import com.studyinghome.entity.Message;
+import com.studyinghome.entity.SysUser;
 import com.studyinghome.framework.result.CodeMsg;
 import com.studyinghome.framework.result.Result;
+import com.studyinghome.rabbitmq.MsgSender;
+import com.studyinghome.service.UserService;
 import com.studyinghome.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class LoginController {
 
     @GetMapping("get/user/{id}")
     public Result queryUser(@PathVariable("id") long id) {
-        User user = userService.getByPrimaryKey(id);
+        SysUser user = userService.getByPrimaryKey(id);
         if (null == user) {
             return Result.error(CodeMsg.ERROR);
         }

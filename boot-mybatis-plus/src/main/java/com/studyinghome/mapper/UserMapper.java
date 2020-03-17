@@ -1,7 +1,7 @@
 package com.studyinghome.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.studyinghome.beans.User;
+import com.studyinghome.entity.User;
 
 /**
  * @author Leslie (panxiang_work@163.com)

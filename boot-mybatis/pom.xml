@@ -21,6 +21,12 @@
             <groupId>com.studyinghome</groupId>
             <artifactId>boot-core</artifactId>
         </dependency>
+        <!--整合mybatis-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
         <!-- swagger2 -->
         <dependency>
             <groupId>io.springfox</groupId>

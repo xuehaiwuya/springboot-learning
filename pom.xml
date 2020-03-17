@@ -13,11 +13,12 @@
     <modules>
         <module>boot-core</module>
         <module>boot-mybatis</module>
+        <module>boot-data-jpa</module>
+        <module>boot-mybatis-plus</module>
         <module>boot-redis</module>
         <module>boot-websocket</module>
         <module>boot-rabbitmq</module>
         <module>boot-security</module>
-        <module>boot-mybatis-plus</module>
     </modules>
 
     <parent>

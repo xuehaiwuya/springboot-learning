@@ -1,7 +1,7 @@
 package com.studyinghome.rabbitmq;
 
 import com.studyinghome.business.common.RabbitConst;
-import com.studyinghome.business.entity.Message;
+import com.studyinghome.entity.Message;
 import com.studyinghome.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

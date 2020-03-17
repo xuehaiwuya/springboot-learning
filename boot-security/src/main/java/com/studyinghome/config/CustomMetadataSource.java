@@ -1,9 +1,9 @@
 package com.studyinghome.config;
 
 import com.studyinghome.business.common.RedisConst;
-import com.studyinghome.business.entity.Menu;
-import com.studyinghome.business.entity.Role;
-import com.studyinghome.business.service.MenuService;
+import com.studyinghome.entity.Menu;
+import com.studyinghome.entity.Role;
+import com.studyinghome.service.MenuService;
 import com.studyinghome.utils.JsonUtil;
 import com.studyinghome.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
