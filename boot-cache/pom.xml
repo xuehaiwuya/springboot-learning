@@ -6,15 +6,14 @@
         <groupId>com.studyinghome</groupId>
         <artifactId>springboot</artifactId>
         <version>0.0.1</version>
-        <relativePath/>
     </parent>
 
-    <artifactId>boot-mybatis-plus</artifactId>
+    <artifactId>boot-cache</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>boot-mybatis-plus</name>
-    <description>mybatis-plus project for Spring Boot</description>
+    <name>boot-cache</name>
+    <description>Cache project for Spring Boot</description>
 
     <dependencies>
         <dependency>
@@ -22,14 +21,13 @@
             <artifactId>boot-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis.plus.version}</version>
+            <groupId>com.studyinghome</groupId>
+            <artifactId>boot-mybatis-plus</artifactId>
+            <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>p6spy</groupId>
-            <artifactId>p6spy</artifactId>
-            <version>3.8.7</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,20 @@
+####### database Config #######
+spring:
+  profiles:
+    include: [center]
+  #cache settings
+  cache:
+    type: redis
+  #redis settings
+  redis:
+    database: 0
+    host: 127.0.0.1
+    password: 341125
+    port: 6379
+
+# Server settings
+server:
+  port: 8089
+  servlet:
+    context-path: /boot-cache
+

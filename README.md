@@ -5,11 +5,13 @@ springboot学习项目,通过springboot整合一些开发中常用的技术来�
 
 #### 整合技术
 + MyBatis
++ swagger
++ Spring Data JPA
 + MyBatis-plus
++ Cache
 + Redis
 + SpringSecurity
 + RabbitMQ
-+ swagger
 + ...
 
 #### 开发环境
@@ -27,8 +29,10 @@ springboot学习项目,通过springboot整合一些开发中常用的技术来�
 | ----------    | -----------------------        |    
 | boot-core     |       项目核心代码              |
 | boot-mybatis  |     SpringBoot + MyBatis + Swagger |
+| boot-data-jpa  |     SpringBoot + Spring Data JPA |
 | boot-mybatis-plus  |     SpringBoot + MyBatis-Plus |
-| boot-redis    |       SpringBoot + redis + mybatis | 
+| boot-cache  |     SpringBoot + 数据缓存Cache |
+| boot-redis    |       SpringBoot + redis | 
 | boot-rabbitmq |    SpringBoot + RabbitMQ         | 
 | boot-security |    SpringBoot + SpringSecurity   | 
 | boot-websocket |    SpringBoot + Websocket   | 
