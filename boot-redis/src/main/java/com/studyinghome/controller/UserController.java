@@ -35,17 +35,18 @@ public class UserController {
      */
     @GetMapping(value = "{id}")
     public Result getUser(@PathVariable("id") long id) {
+        String dataSource = "从缓存获取数据..........";
+
         User user = JsonUtil.string2Obj(redisUtil.get("user"), User.class);
-        log.info("从缓存获取数据..........");
         if (null == user) {
-            log.info("从缓存获取数据失败..........");
             user = userService.getByPrimaryKey(id);
             if (null == user) {
                 return Result.error(CodeMsg.ERROR);
             }
-            log.info("从数据库获取数据...........");
+            dataSource = "从数据库获取数据...........";
             redisUtil.set("user", JsonUtil.obj2String(user));
         }
+        log.info(dataSource);
         return Result.success(CodeMsg.SUCCESS, user);
     }
 }

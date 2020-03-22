@@ -9,7 +9,7 @@ import org.springframework.util.CollectionUtils;
 import java.util.concurrent.TimeUnit;
 
 /**
- * ${redis操作工具类}
+ * redis操作工具类
  *
  * @author leslie panxiang_work@163.com
  * @create 2018-11-08 15:39
